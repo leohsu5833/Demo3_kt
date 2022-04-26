@@ -1,9 +1,11 @@
 package com.example.demo3_kt
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,5 +23,16 @@ class MainActivity : AppCompatActivity() {
         intent.putExtras(bundle)
         intent.setClass(this,SecondActivity::class.java)
         startActivity(intent)
+    }
+
+    fun doCall(view: View?) {
+        val intent = Intent(Intent.ACTION_CALL)
+        intent.data = Uri.parse("tel:022222222")
+        try {
+            startActivity(intent)
+        } catch (se: SecurityException) {
+            val textView = findViewById<TextView>(R.id.textView1)
+            textView.text = se.message
+        }
     }
 }
