@@ -10,9 +10,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+    companion object {
+        const val ID1 = "id";
+    }
 
     fun doActivity(v : View) {
         val intent = Intent()
+        val bundle = Bundle()
+        bundle.putString(ID1, "12345")
+        intent.putExtras(bundle)
         intent.setClass(this,SecondActivity::class.java)
         startActivity(intent)
     }
