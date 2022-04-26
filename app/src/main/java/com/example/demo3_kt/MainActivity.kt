@@ -97,4 +97,10 @@ class MainActivity : AppCompatActivity() {
             textView.text = se.message
         }
     }
+
+    fun doWeb(v: View) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse("https://www.yahoo.com.tw")
+        startActivity(intent)
+    }
 }
